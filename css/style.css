@@ -540,3 +540,11 @@ hr {
 #connect a.googleplus:hover {
 	background-position: 0 -197px;
 }
+
+
+img.foot {
+  opacity: 0.5;
+}
+img.foot:hover {
+  opacity: 1.0;
+}
