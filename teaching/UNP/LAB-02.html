@@ -1,70 +1,428 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>LAB-02</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,
-      initial-scale=1.0">
-    <script type="text/x-mathjax-config">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <title>LAB-02</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config;executed=true">
           MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"],"imageFont":null},"root":"file:///home/drago/.atom/packages/markdown-preview-enhanced/node_modules/@shd101wyy/mume/dependencies/mathjax"});
         </script>
-    <script type="text/javascript" async="" src="mathjax/MathJax.js" charset="UTF-8"></script>
-    <style>
+        <script type="text/javascript" async="" src="mathjax/MathJax.js" charset="UTF-8"></script>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
       pre{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;padding:1em;margin:.5em 0;overflow:auto;line-height:1.5;tab-size:4;hyphens:none;color:#555;background-color:#f0f0f0 !important;border:#d6d6d6;border-radius:3px}pre[class*="language-"]{padding:1em}code[class*="language-"] .token.comment,pre[class*="language-"] .token.comment,code[class*="language-"] .token.prolog,pre[class*="language-"] .token.prolog,code[class*="language-"] .token.doctype,pre[class*="language-"] .token.doctype,code[class*="language-"] .token.cdata,pre[class*="language-"] .token.cdata{color:#999988;font-style:italic}code[class*="language-"] .token.punctuation,pre[class*="language-"] .token.punctuation{color:#920B2D}code[class*="language-"] .namespace,pre[class*="language-"] .namespace{opacity:.7}code[class*="language-"] .token.property,pre[class*="language-"] .token.property{font-weight:bold;color:#333}code[class*="language-"] .token.boolean,pre[class*="language-"] .token.boolean,code[class*="language-"] .token.number,pre[class*="language-"] .token.number,code[class*="language-"] .token.function-name,pre[class*="language-"] .token.function-name{color:#D14}code[class*="language-"] .token.tag,pre[class*="language-"] .token.tag{color:#D14}code[class*="language-"] .token.symbol,pre[class*="language-"] .token.symbol{color:#990073}code[class*="language-"] .token.selector,pre[class*="language-"] .token.selector{color:#008080}code[class*="language-"] .token.attr-name,pre[class*="language-"] .token.attr-name{color:#458;font-weight:bold}code[class*="language-"] .token.string,pre[class*="language-"] .token.string{color:#D14}code[class*="language-"] .token.char,pre[class*="language-"] .token.char{color:#606aa1}code[class*="language-"] .token.url,pre[class*="language-"] .token.url{color:#888}code[class*="language-"] .token.atrule,pre[class*="language-"] .token.atrule,code[class*="language-"] .token.attr-value,pre[class*="language-"] .token.attr-value,code[class*="language-"] .token.keyword,pre[class*="language-"] .token.keyword{color:#222;font-weight:bold}code[class*="language-"] .token.function,pre[class*="language-"] .token.function{color:#900}code[class*="language-"] .token.class-name,pre[class*="language-"] .token.class-name{text-decoration:underline;color:#606aa1}code[class*="language-"] .token.variable,pre[class*="language-"] .token.variable{color:#008080}code[class*="language-"] .token.important,pre[class*="language-"] .token.important,code[class*="language-"] .token.bold,pre[class*="language-"] .token.bold{font-weight:bold}code[class*="language-"] .token.italic,pre[class*="language-"] .token.italic{font-style:italic}code[class*="language-"] .token.entity,pre[class*="language-"] .token.entity{cursor:help}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:rgba(153,122,102,0.08);background:linear-gradient(to right, rgba(153,122,102,0.1) 70%, rgba(153,122,102,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:rgba(153,122,102,0.4);color:#f5f2f0;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px white}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#555;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#030303}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#7e7e7e}html body strong{color:#030303}html body del{color:#7e7e7e}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#7e7e7e;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#030303}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#030303;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#030303;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#030303;page-break-after:avoid}html body blockquote{color:#7e7e7e}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
 /* Please visit the URL below for more information: */
 /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
 
       </style>
-  </head>
-  <body for="html-export">
-    <div class="mume markdown-preview ">
-      <h1 id="assignments">Assignments:</h1>
-      <ol type="1">
-        <li>
-          <p>Write a function in C to swap two variables by using
-            pass-by-reference.</p>
-        </li>
-        <li>
-          <p>Write a program in C to store n elements in an array and
-            print the elements using pointer.</p>
-        </li>
-        <li>
-          <p>Write a C program that uses a function that can return
-            multiple value of different data type using pointer and
-            without using structure.</p>
-        </li>
-        <li>
-          <p>Write a C Program to list all files and sub-directories in
-            a directory (Hint: use #include &lt;dirent.h&gt;)</p>
-        </li>
-        <li>
-          <p>Write a C Program to count number of lines in a file</p>
-        </li>
-        <li>
-          <p>Write a C Program to copy contents of one file to another
-            file</p>
-        </li>
-        <li>
-          <p>Write a C Program to merge contents of two files into a
-            third file</p>
-        </li>
-        <li>
-          <p>Write a C program to delete a file</p>
-        </li>
-        <li>
-          <p>Write a C program to insert 5 line to a file then use a
-            function insert line number at the beginning of each line.</p>
-        </li>
-      </ol>
-    </div>
-    <div class="md-sidebar-toc">
-      <ul>
-        <li><a href="#assignments">Assignments:</a></li>
-      </ul>
-    </div>
-    <a id="sidebar-toc-btn">≡</a>
-    <script>
+    <style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style></head>
+    <body for="html-export"><div id="MathJax_Message" style="display: none;"></div>
+      <div class="mume markdown-preview  ">
+      <h1 id="lab-exercise-2">LAB Exercise 2</h1>
+<p>(Date : 01-04-2021)</p>
+<h2 id="assignments">Assignments:</h2>
+<ol type="1">
+<li><p>Write a function in C to swap two variables by using pass-by-reference.</p></li>
+<li><p>Write a program in C to store n elements in an array and print the elements using pointer.</p></li>
+<li><p>Write a C program that uses a function that can return multiple 
+value of different data type using pointer and without using structure.</p></li>
+<li><p>Write a C Program to list all files and sub-directories in a directory (Hint: use #include &lt;dirent.h&gt;)</p></li>
+<li><p>Write a C Program to count number of lines in a file</p></li>
+<li><p>Write a C Program to copy contents of one file to another file</p></li>
+<li><p>Write a C Program to merge contents of two files into a third file</p></li>
+<li><p>Write a C program to delete a file</p></li>
+<li><p>Write a C program to insert 5 line to a file then use a function insert line number at the beginning of each line.</p></li>
+</ol>
+<h2 id="solutions-to-assignments">Solutions to Assignments:</h2>
+<ol type="1">
+<li>Write a function in C to swap two variables by using pass-by-reference.</li>
+</ol>
+<p><strong>Answer</strong></p>
+<pre class="text language-text language-c" data-role="codeBlock" data-info="c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>p<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>q<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">int</span> r<span class="token punctuation">;</span>
+  r<span class="token operator">=</span><span class="token operator">*</span>p<span class="token punctuation">;</span>
+  <span class="token operator">*</span>p<span class="token operator">=</span><span class="token operator">*</span>q<span class="token punctuation">;</span>
+  <span class="token operator">*</span>q<span class="token operator">=</span>r<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> b<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\nValue of a before swapping : %d"</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\nValue of b before swapping : %d"</span><span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n\n Calling the swap function\n\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">swap</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">,</span><span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\nValue of a after swapping : %d"</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\nValue of b after swapping : %d\n"</span><span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></pre>
+<p><strong>Output</strong></p>
+<div class="code-chunk" data-id="code-chunk-id-0" data-cmd="bash"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><pre class="language-text">Value of a before swapping : 5
+Value of b before swapping : 6
+
+ Calling the swap function
+
+
+Value of a after swapping : 6
+Value of b after swapping : 5
+</pre></div></div>
+<ol type="1" start="2">
+<li>Write a program in C to store n elements in an array and print the elements using pointer.</li>
+</ol>
+<p><strong>Answer</strong></p>
+<pre class="text language-text language-c" data-role="codeBlock" data-info="c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">,</span>i<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> <span class="token operator">*</span>b<span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Enter the elements in array"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+  <span class="token punctuation">}</span>
+  b<span class="token operator">=</span>a<span class="token punctuation">;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d "</span><span class="token punctuation">,</span><span class="token operator">*</span><span class="token punctuation">(</span>b<span class="token operator">+</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></pre>
+<p><strong>Output</strong></p>
+<div class="code-chunk" data-id="code-chunk-id-1" data-cmd="bash"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><pre class="language-text">Enter the elements in array: 1 2 3 4 5 6 7 8 9 10 
+Elements in array are: 1 2 3 4 5 6 7 8 9 10 </pre></div></div>
+<ol type="1" start="3">
+<li>Write a C program that uses a function that can return multiple 
+value of different data type using pointer and without using structure.</li>
+</ol>
+<p><strong>Answer</strong></p>
+<pre class="text language-text language-c" data-role="codeBlock" data-info="c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token keyword">void</span><span class="token operator">*</span><span class="token operator">*</span> <span class="token function">ret</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token operator">*</span><span class="token operator">*</span>p<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> b<span class="token operator">=</span><span class="token string">'c'</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> c<span class="token operator">=</span><span class="token number">1.2</span><span class="token punctuation">;</span>
+    p <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token operator">*</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">&amp;</span>a<span class="token punctuation">;</span>
+    p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">&amp;</span>b<span class="token punctuation">;</span>
+    p<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">&amp;</span>c<span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token operator">*</span><span class="token operator">*</span>p<span class="token punctuation">;</span>
+    p<span class="token operator">=</span><span class="token function">ret</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span>p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c\n"</span><span class="token punctuation">,</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span>p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%f\n"</span><span class="token punctuation">,</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">float</span> <span class="token operator">*</span><span class="token punctuation">)</span>p<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></pre>
+<p><strong>Output:</strong></p>
+<div class="code-chunk" data-id="code-chunk-id-2" data-cmd="bash"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><pre class="language-text">50
+c
+1.200000
+</pre></div></div>
+<ol type="1" start="4">
+<li>Write a C Program to list all files and sub-directories in a directory (Hint: use #include &lt;dirent.h&gt;)</li>
+</ol>
+<p><strong>Answer</strong></p>
+<pre class="text language-text language-c" data-role="codeBlock" data-info="c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;dirent.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+   <span class="token keyword">struct</span> <span class="token class-name">dirent</span> <span class="token operator">*</span>files<span class="token punctuation">;</span>
+   DIR <span class="token operator">*</span>test_dir<span class="token punctuation">;</span>
+   DIR <span class="token operator">*</span>dir <span class="token operator">=</span> <span class="token function">opendir</span><span class="token punctuation">(</span><span class="token string">"Test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span> <span class="token punctuation">(</span>dir <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Directory cannot be opened!"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"The files in folder are :\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">char</span> fn<span class="token punctuation">[</span><span class="token number">255</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+   <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>files <span class="token operator">=</span> <span class="token function">readdir</span><span class="token punctuation">(</span>dir<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+   <span class="token punctuation">{</span>
+     <span class="token function">strcpy</span><span class="token punctuation">(</span> fn<span class="token punctuation">,</span> <span class="token string">"Test/"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token function">strcat</span><span class="token punctuation">(</span> fn<span class="token punctuation">,</span> files<span class="token operator">-&gt;</span>d_name <span class="token punctuation">)</span><span class="token punctuation">;</span>
+     test_dir <span class="token operator">=</span> <span class="token function">opendir</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token keyword">if</span> <span class="token punctuation">(</span>test_dir <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+     <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s\n"</span><span class="token punctuation">,</span> files<span class="token operator">-&gt;</span>d_name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+     <span class="token function">closedir</span><span class="token punctuation">(</span>test_dir<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">closedir</span><span class="token punctuation">(</span>dir<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   dir <span class="token operator">=</span> <span class="token function">opendir</span><span class="token punctuation">(</span><span class="token string">"Test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span> <span class="token punctuation">(</span>dir <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Directory cannot be opened!"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n\nThe sub-folders in folder are :\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>files <span class="token operator">=</span> <span class="token function">readdir</span><span class="token punctuation">(</span>dir<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+   <span class="token punctuation">{</span>
+     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">strcmp</span><span class="token punctuation">(</span> <span class="token string">"."</span><span class="token punctuation">,</span> files<span class="token operator">-&gt;</span>d_name <span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token function">strcmp</span><span class="token punctuation">(</span> <span class="token string">".."</span><span class="token punctuation">,</span> files<span class="token operator">-&gt;</span>d_name <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+     <span class="token punctuation">{</span>
+       <span class="token function">strcpy</span><span class="token punctuation">(</span> fn<span class="token punctuation">,</span> <span class="token string">"Test/"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token function">strcat</span><span class="token punctuation">(</span> fn<span class="token punctuation">,</span> files<span class="token operator">-&gt;</span>d_name <span class="token punctuation">)</span><span class="token punctuation">;</span>
+       test_dir <span class="token operator">=</span> <span class="token function">opendir</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token keyword">if</span> <span class="token punctuation">(</span>test_dir <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+       <span class="token punctuation">{</span>
+          <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s\n"</span><span class="token punctuation">,</span> files<span class="token operator">-&gt;</span>d_name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token punctuation">}</span>
+       <span class="token function">closedir</span><span class="token punctuation">(</span>test_dir<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">closedir</span><span class="token punctuation">(</span>dir<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+<p><strong>Output</strong></p>
+<div class="code-chunk" data-id="code-chunk-id-3" data-cmd="bash"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><pre class="language-text">The files in folder are :
+test file 3.doc
+test file 2.pdf
+test file 1.txt
+
+
+The sub-folders in folder are :
+test sub folder 1
+test sub folder 3
+test sub folder 2
+</pre></div></div>
+<ol type="1" start="5">
+<li>Write a C Program to count number of lines in a file</li>
+</ol>
+<p><strong>Answer</strong></p>
+<pre class="text language-text language-c" data-role="codeBlock" data-info="c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    FILE <span class="token operator">*</span>fileptr<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> count_lines <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> filechar<span class="token punctuation">[</span><span class="token number">40</span><span class="token punctuation">]</span><span class="token punctuation">,</span> chr<span class="token punctuation">;</span>
+
+    fileptr <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"dd.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    chr <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>fileptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>chr <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>chr <span class="token operator">==</span> <span class="token string">'\n'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            count_lines <span class="token operator">=</span> count_lines <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        chr <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>fileptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">fclose</span><span class="token punctuation">(</span>fileptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"There are %d lines in the file\n"</span><span class="token punctuation">,</span> count_lines<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></pre>
+<p><strong>Output</strong></p>
+<div class="code-chunk" data-id="code-chunk-id-4" data-cmd="bash"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><pre class="language-text">There are 5 lines in the file
+</pre></div></div>
+<ol type="1" start="6">
+<li>Write a C Program to copy contents of one file to another file</li>
+</ol>
+<p><strong>Answer</strong></p>
+<pre class="text language-text language-c" data-role="codeBlock" data-info="c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    FILE <span class="token operator">*</span>source<span class="token punctuation">,</span> <span class="token operator">*</span>dest<span class="token punctuation">;</span>
+    <span class="token keyword">char</span> ch<span class="token punctuation">;</span>
+
+    source <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"dd.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    dest <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"cd.txt"</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ch <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>ch <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">putc</span><span class="token punctuation">(</span>ch<span class="token punctuation">,</span> dest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ch <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">fclose</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fclose</span><span class="token punctuation">(</span>dest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Writing completed .... "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></pre>
+<p><strong>Output</strong></p>
+<div class="code-chunk" data-id="code-chunk-id-5" data-cmd="bash"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><pre class="language-text">Writing completed .... </pre></div></div>
+<ol type="1" start="7">
+<li>Write a C Program to merge contents of two files into a third file</li>
+</ol>
+<p><strong>Answer</strong></p>
+<pre class="text language-text language-c" data-role="codeBlock" data-info="c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    FILE <span class="token operator">*</span>source1<span class="token punctuation">,</span> <span class="token operator">*</span>source2<span class="token punctuation">;</span>
+    <span class="token keyword">char</span> ch<span class="token punctuation">;</span>
+
+    source1 <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"s1.txt"</span><span class="token punctuation">,</span> <span class="token string">"r+"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    source2 <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"s2.txt"</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ch <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>source1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>ch <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        ch <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>source1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    ch <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>source2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>ch <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">putc</span><span class="token punctuation">(</span>ch<span class="token punctuation">,</span>source1<span class="token punctuation">)</span>
+        ch <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>source2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">fclose</span><span class="token punctuation">(</span>source1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fclose</span><span class="token punctuation">(</span>source2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Appending completed .... "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></pre>
+<p><strong>Output</strong></p>
+<div class="code-chunk" data-id="code-chunk-id-6" data-cmd="bash"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><pre class="language-text">Appending completed .... </pre></div></div>
+<p><strong>Output</strong></p>
+<ol type="1" start="8">
+<li>Write a C program to delete a file</li>
+</ol>
+<p><strong>Answer</strong></p>
+<pre class="text language-text language-c" data-role="codeBlock" data-info="c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">"dd.txt"</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Deleted successfully"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">else</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Unable to delete the file"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></pre>
+<p><strong>Output</strong></p>
+<div class="code-chunk" data-id="code-chunk-id-7" data-cmd="bash"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><pre class="language-text">Deleted successfully</pre></div></div>
+<ol type="1" start="9">
+<li>Write a C program to insert 5 line to a file then use a function insert line number at the beginning of each line.</li>
+</ol>
+<p><strong>Answer</strong></p>
+<pre class="text language-text language-c" data-role="codeBlock" data-info="c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;string.h&gt;</span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  FILE <span class="token operator">*</span>fp<span class="token punctuation">,</span> <span class="token operator">*</span>fp1<span class="token punctuation">,</span> <span class="token operator">*</span>fp2<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> c<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> line_number<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">char</span> ch<span class="token punctuation">,</span> <span class="token operator">*</span>line<span class="token punctuation">,</span> <span class="token operator">*</span>new_line<span class="token punctuation">,</span> sep<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">". \0"</span><span class="token punctuation">;</span>
+  fp <span class="token operator">=</span> <span class="token function">fopen</span> <span class="token punctuation">(</span><span class="token string">"dd.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  fp1 <span class="token operator">=</span> <span class="token function">fopen</span> <span class="token punctuation">(</span><span class="token string">"dd.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  fp2 <span class="token operator">=</span> <span class="token function">fopen</span> <span class="token punctuation">(</span><span class="token string">"dd_new.txt"</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  ch <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>ch <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>ch <span class="token operator">==</span> <span class="token string">'\n'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+      line <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token punctuation">(</span>c<span class="token operator">+</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      new_line <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token punctuation">(</span>c<span class="token operator">+</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">sprintf</span><span class="token punctuation">(</span>new_line<span class="token punctuation">,</span><span class="token string">"%d"</span> <span class="token punctuation">,</span>line_number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">fgets</span><span class="token punctuation">(</span>line<span class="token punctuation">,</span> c<span class="token operator">+</span><span class="token number">3</span><span class="token punctuation">,</span> fp1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">strcat</span><span class="token punctuation">(</span> new_line<span class="token punctuation">,</span> sep<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">strcat</span><span class="token punctuation">(</span> new_line<span class="token punctuation">,</span> line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">fputs</span><span class="token punctuation">(</span>new_line<span class="token punctuation">,</span> fp2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span>new_line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      line_number<span class="token operator">=</span>line_number<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+      c<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span>
+    <span class="token punctuation">{</span>
+      c<span class="token operator">=</span>c<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    ch <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">fclose</span><span class="token punctuation">(</span>fp1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">fclose</span><span class="token punctuation">(</span>fp2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  fp <span class="token operator">=</span> <span class="token function">fopen</span> <span class="token punctuation">(</span><span class="token string">"dd.txt"</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  fp2 <span class="token operator">=</span> <span class="token function">fopen</span> <span class="token punctuation">(</span><span class="token string">"dd_new.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  ch <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>fp2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>ch <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">putc</span><span class="token punctuation">(</span>ch<span class="token punctuation">,</span> fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ch <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>fp2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fclose</span><span class="token punctuation">(</span>fp2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">"dd_new.txt"</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></pre>
+<p><strong>Output</strong></p>
+<div class="code-chunk" data-id="code-chunk-id-8" data-cmd="bash"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><pre class="language-text">1. Dibyasundar
+2. dd
+3. dd
+4. dd
+5. dd
+</pre></div></div>
+
+      </div>
+      <div class="md-sidebar-toc"><ul>
+<li><a href="#lab-exercise-2">LAB Exercise 2</a>
+<ul>
+<li><a href="#assignments">Assignments:</a></li>
+<li><a href="#solutions-to-assignments">Solutions to Assignments:</a></li>
+</ul>
+</li>
+</ul>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+    
+    
+<script>
 
 var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
 sidebarTOCBtn.addEventListener('click', function(event) {
@@ -76,5 +434,5 @@ sidebarTOCBtn.addEventListener('click', function(event) {
   }
 })
 </script>
-  </body>
-</html>
+      
+  </body></html>
