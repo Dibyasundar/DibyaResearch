@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)file:///tmp/mume202267-88-non4lj.8tvm9.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>$\LaTeX$ Graphics drawing with Tikz</title>
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config;executed=true">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async="" src="./Tikz_in_LaTeX_files_files/MathJax.js" charset="UTF-8"></script>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    <style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none; box-sizing: content-box}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_test {font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow: hidden; height: 1px}
+.MathJax_test.mjx-test-display {display: table!important}
+.MathJax_test.mjx-test-inline {display: inline!important; margin-right: -1px}
+.MathJax_test.mjx-test-default {display: block!important; clear: both}
+.MathJax_ex_box {display: inline-block!important; position: absolute; overflow: hidden; min-height: 0; max-height: none; padding: 0; border: 0; margin: 0; width: 1px; height: 60ex}
+.MathJax_em_box {display: inline-block!important; position: absolute; overflow: hidden; min-height: 0; max-height: none; padding: 0; border: 0; margin: 0; width: 1px; height: 60em}
+.mjx-test-inline .MathJax_left_box {display: inline-block; width: 0; float: left}
+.mjx-test-inline .MathJax_right_box {display: inline-block; width: 0; float: right}
+.mjx-test-display .MathJax_right_box {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?V=2.7.5') format('woff'), url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?V=2.7.5') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?V=2.7.5') format('woff'), url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?V=2.7.5') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?V=2.7.5') format('woff'), url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?V=2.7.5') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?V=2.7.5') format('woff'), url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?V=2.7.5') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?V=2.7.5') format('woff'), url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?V=2.7.5') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?V=2.7.5') format('woff'), url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?V=2.7.5') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?V=2.7.5') format('woff'), url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?V=2.7.5') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?V=2.7.5') format('woff'), url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?V=2.7.5') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?V=2.7.5') format('woff'), url('file:///home/drago/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.3/node_modules/@shd101wyy/mume/dependencies/mathjax/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?V=2.7.5') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style></head>
+    <body for="html-export"><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"><br></div></div><div id="MathJax_Message" style="display: none;"></div>
+      <div class="mume markdown-preview  ">
+      <div class="code-chunk" data-id="code-chunk-id-0" data-cmd="toc"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"></div></div><ul>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#latex-graphics-drawing-with-tikz"><span class="mathjax-exps"><span class="MathJax_Preview" style=""></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" style=""><nobr><span class="math" id="MathJax-Span-1" style="width: 3.384em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.769em; height: 0px; font-size: 122%;"><span style="position: absolute; clip: rect(1.335em, 1002.77em, 2.564em, -999.997em); top: -2.2em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: MathJax_Math-italic;">L</span><span class="mspace" id="MathJax-Span-4" style="height: 0em; vertical-align: 0em; margin-left: -0.305em;"></span><span class="mpadded" id="MathJax-Span-5"><span style="display: inline-block; position: relative; width: 0.515em; height: 0px;"><span style="position: absolute; clip: rect(3.332em, 1000.51em, 4.152em, -999.997em); top: -4.198em; left: 0em;"><span class="mrow" id="MathJax-Span-6"><span class="texatom" id="MathJax-Span-7"><span class="mrow" id="MathJax-Span-8"><span class="mstyle" id="MathJax-Span-9"><span class="mrow" id="MathJax-Span-10"><span class="texatom" id="MathJax-Span-11"><span class="mrow" id="MathJax-Span-12"><span class="mi" id="MathJax-Span-13" style="font-size: 70.7%; font-family: MathJax_Math-italic;">A</span></span></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 3.998em;"></span></span></span></span><span class="mspace" id="MathJax-Span-14" style="height: 0em; vertical-align: 0em; margin-left: -0.151em;"></span><span class="mi" id="MathJax-Span-15" style="font-family: MathJax_Math-italic;">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.105em;"></span></span><span class="mspace" id="MathJax-Span-16" style="height: 0em; vertical-align: 0em; margin-left: -0.151em;"></span><span class="mpadded" id="MathJax-Span-17"><span style="display: inline-block; position: relative; width: 0.771em; height: 0px;"><span style="position: absolute; clip: rect(3.179em, 1000.77em, 4.152em, -999.997em); top: -3.788em; left: 0em;"><span class="mrow" id="MathJax-Span-18"><span class="texatom" id="MathJax-Span-19"><span class="mrow" id="MathJax-Span-20"><span class="mi" id="MathJax-Span-21" style="font-family: MathJax_Math-italic;">E<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.054em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 3.998em;"></span></span></span></span><span class="mspace" id="MathJax-Span-22" style="height: 0em; vertical-align: 0em; margin-left: -0.1em;"></span><span class="mi" id="MathJax-Span-23" style="font-family: MathJax_Math-italic;">X<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left: 0px solid; width: 0px; height: 1.253em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-1">\LaTeX</script></span> Graphics drawing with Tikz</a>
+<ul>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#what-is-tikz">What is tikz?</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#why-we-want-to-use-tikz">Why we want to use tikz?</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#pros-and-cons-of-tikz">Pros and cons of tikz</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#a-typical-tikz-environment">A typical tikz environment</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#a-inline-tikz-environment">A inline tikz environment</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#line-drawing-example">Line drawing example</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#rectangle-drawing-example">Rectangle drawing example</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#ellipse-and-circle-drawing-example">Ellipse and circle drawing example</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#drawing-bezier-curve">Drawing Bezier Curve</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#changing-draw-style">Changing draw style</a>
+<ul>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#predefined-colors">Predefined Colors</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#defining-own-colors">Defining own Colors</a></li>
+</ul>
+</li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#controlling-fill-and-transparency-of-colors">Controlling fill and transparency of colors</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#drawing-arrow-line">Drawing arrow line</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#nodes-in-tikz">nodes in TikZ</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#relative-controls-of-shapes">relative controls of shapes</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#design-a-flow-chart-for-adding-10-numbers-uning-tikzedt-tool">Design a flow chart for adding 10 numbers uning TikzEdt Tool</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#plots-in-tikz">Plots in TikZ</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#plots-from-csv-file-in-tikz">Plots from csv file in TikZ</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#plots-from-txt-file-in-tikz">Plots from txt file in TikZ</a></li>
+</ul>
+</li>
+</ul>
+<h1 class="mume-header" id="latex-graphics-drawing-with-tikz"><span class="mathjax-exps"><span class="MathJax_Preview" style=""></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" style=""><nobr><span class="math" id="MathJax-Span-24" style="width: 3.416em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.802em; height: 0px; font-size: 122%;"><span style="position: absolute; clip: rect(1.39em, 1002.8em, 2.437em, -999.999em); top: -2.162em; left: 0em;"><span class="mrow" id="MathJax-Span-25"><span class="mi" id="MathJax-Span-26" style="font-family: MathJax_Math-italic;">L</span><span class="mspace" id="MathJax-Span-27" style="height: 0em; vertical-align: 0em; margin-left: -0.318em;"></span><span class="mpadded" id="MathJax-Span-28"><span style="display: inline-block; position: relative; width: 0.525em; height: 0px;"><span style="position: absolute; clip: rect(3.439em, 1000.52em, 4.077em, -999.999em); top: -4.211em; left: 0em;"><span class="mrow" id="MathJax-Span-29"><span class="texatom" id="MathJax-Span-30"><span class="mrow" id="MathJax-Span-31"><span class="mstyle" id="MathJax-Span-32"><span class="mrow" id="MathJax-Span-33"><span class="texatom" id="MathJax-Span-34"><span class="mrow" id="MathJax-Span-35"><span class="mi" id="MathJax-Span-36" style="font-size: 70.7%; font-family: MathJax_Math-italic;">A</span></span></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span></span></span><span class="mspace" id="MathJax-Span-37" style="height: 0em; vertical-align: 0em; margin-left: -0.158em;"></span><span class="mi" id="MathJax-Span-38" style="font-family: MathJax_Math-italic;">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.115em;"></span></span><span class="mspace" id="MathJax-Span-39" style="height: 0em; vertical-align: 0em; margin-left: -0.135em;"></span><span class="mpadded" id="MathJax-Span-40"><span style="display: inline-block; position: relative; width: 0.775em; height: 0px;"><span style="position: absolute; clip: rect(3.257em, 1000.77em, 4.077em, -999.999em); top: -3.801em; left: 0em;"><span class="mrow" id="MathJax-Span-41"><span class="texatom" id="MathJax-Span-42"><span class="mrow" id="MathJax-Span-43"><span class="mi" id="MathJax-Span-44" style="font-family: MathJax_Math-italic;">E<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.024em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span></span></span><span class="mspace" id="MathJax-Span-45" style="height: 0em; vertical-align: 0em; margin-left: -0.113em;"></span><span class="mi" id="MathJax-Span-46" style="font-family: MathJax_Math-italic;">X<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.024em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.164em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.276em; border-left: 0px solid; width: 0px; height: 1.196em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-2">\LaTeX</script></span> Graphics drawing with Tikz</h1>
+
+<h2 class="mume-header" id="what-is-tikz">What is tikz?</h2>
+
+<ul>
+<li>TikZ is probably the most complex and powerful tool to create graphic elements in LaTeX.</li>
+<li>Tikz (ist kein Zeichenprogramm) : <strong>it’s not a drawing program</strong></li>
+<li>Tikz is many times writen as PGF/TikZ.
+<ul>
+<li>PGF : <strong>Portable Graphics Format</strong></li>
+<li>
+<p style="color:red">PGF: internal engine; TikZ: frontend</p>
+</li>
+</ul>
+</li>
+<li>Tikz is a vector graphics drawing package that works in the <span class="mathjax-exps"><span class="MathJax_Preview" style=""></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" style=""><nobr><span class="math" id="MathJax-Span-47" style="width: 3.384em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.769em; height: 0px; font-size: 122%;"><span style="position: absolute; clip: rect(1.335em, 1002.77em, 2.564em, -999.997em); top: -2.2em; left: 0em;"><span class="mrow" id="MathJax-Span-48"><span class="mi" id="MathJax-Span-49" style="font-family: MathJax_Math-italic;">L</span><span class="mspace" id="MathJax-Span-50" style="height: 0em; vertical-align: 0em; margin-left: -0.305em;"></span><span class="mpadded" id="MathJax-Span-51"><span style="display: inline-block; position: relative; width: 0.515em; height: 0px;"><span style="position: absolute; clip: rect(3.332em, 1000.51em, 4.152em, -999.997em); top: -4.198em; left: 0em;"><span class="mrow" id="MathJax-Span-52"><span class="texatom" id="MathJax-Span-53"><span class="mrow" id="MathJax-Span-54"><span class="mstyle" id="MathJax-Span-55"><span class="mrow" id="MathJax-Span-56"><span class="texatom" id="MathJax-Span-57"><span class="mrow" id="MathJax-Span-58"><span class="mi" id="MathJax-Span-59" style="font-size: 70.7%; font-family: MathJax_Math-italic;">A</span></span></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 3.998em;"></span></span></span></span><span class="mspace" id="MathJax-Span-60" style="height: 0em; vertical-align: 0em; margin-left: -0.151em;"></span><span class="mi" id="MathJax-Span-61" style="font-family: MathJax_Math-italic;">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.105em;"></span></span><span class="mspace" id="MathJax-Span-62" style="height: 0em; vertical-align: 0em; margin-left: -0.151em;"></span><span class="mpadded" id="MathJax-Span-63"><span style="display: inline-block; position: relative; width: 0.771em; height: 0px;"><span style="position: absolute; clip: rect(3.179em, 1000.77em, 4.152em, -999.997em); top: -3.788em; left: 0em;"><span class="mrow" id="MathJax-Span-64"><span class="texatom" id="MathJax-Span-65"><span class="mrow" id="MathJax-Span-66"><span class="mi" id="MathJax-Span-67" style="font-family: MathJax_Math-italic;">E<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.054em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 3.998em;"></span></span></span></span><span class="mspace" id="MathJax-Span-68" style="height: 0em; vertical-align: 0em; margin-left: -0.1em;"></span><span class="mi" id="MathJax-Span-69" style="font-family: MathJax_Math-italic;">X<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left: 0px solid; width: 0px; height: 1.253em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-3">\LaTeX</script></span> environment.</li>
+</ul>
+<h2 class="mume-header" id="why-we-want-to-use-tikz">Why we want to use tikz?</h2>
+
+<ul>
+<li>Nicely integrated into <span class="mathjax-exps"><span class="MathJax_Preview" style=""></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" style=""><nobr><span class="math" id="MathJax-Span-70" style="width: 3.384em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.769em; height: 0px; font-size: 122%;"><span style="position: absolute; clip: rect(1.335em, 1002.77em, 2.564em, -999.997em); top: -2.2em; left: 0em;"><span class="mrow" id="MathJax-Span-71"><span class="mi" id="MathJax-Span-72" style="font-family: MathJax_Math-italic;">L</span><span class="mspace" id="MathJax-Span-73" style="height: 0em; vertical-align: 0em; margin-left: -0.305em;"></span><span class="mpadded" id="MathJax-Span-74"><span style="display: inline-block; position: relative; width: 0.515em; height: 0px;"><span style="position: absolute; clip: rect(3.332em, 1000.51em, 4.152em, -999.997em); top: -4.198em; left: 0em;"><span class="mrow" id="MathJax-Span-75"><span class="texatom" id="MathJax-Span-76"><span class="mrow" id="MathJax-Span-77"><span class="mstyle" id="MathJax-Span-78"><span class="mrow" id="MathJax-Span-79"><span class="texatom" id="MathJax-Span-80"><span class="mrow" id="MathJax-Span-81"><span class="mi" id="MathJax-Span-82" style="font-size: 70.7%; font-family: MathJax_Math-italic;">A</span></span></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 3.998em;"></span></span></span></span><span class="mspace" id="MathJax-Span-83" style="height: 0em; vertical-align: 0em; margin-left: -0.151em;"></span><span class="mi" id="MathJax-Span-84" style="font-family: MathJax_Math-italic;">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.105em;"></span></span><span class="mspace" id="MathJax-Span-85" style="height: 0em; vertical-align: 0em; margin-left: -0.151em;"></span><span class="mpadded" id="MathJax-Span-86"><span style="display: inline-block; position: relative; width: 0.771em; height: 0px;"><span style="position: absolute; clip: rect(3.179em, 1000.77em, 4.152em, -999.997em); top: -3.788em; left: 0em;"><span class="mrow" id="MathJax-Span-87"><span class="texatom" id="MathJax-Span-88"><span class="mrow" id="MathJax-Span-89"><span class="mi" id="MathJax-Span-90" style="font-family: MathJax_Math-italic;">E<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.054em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 3.998em;"></span></span></span></span><span class="mspace" id="MathJax-Span-91" style="height: 0em; vertical-align: 0em; margin-left: -0.1em;"></span><span class="mi" id="MathJax-Span-92" style="font-family: MathJax_Math-italic;">X<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left: 0px solid; width: 0px; height: 1.253em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-4">\LaTeX</script></span> and Beamer</li>
+<li>reduction in size of pdf.</li>
+<li>quility of picture.</li>
+<li>more control over figure in run time.</li>
+<li>Placed inline figures in the middle of text</li>
+</ul>
+<h2 class="mume-header" id="pros-and-cons-of-tikz">Pros and cons of tikz</h2>
+
+<ul>
+<li>Pros
+<ul>
+<li>Programatically draw with exact precision</li>
+<li>Consistent typography</li>
+<li>Very fast for simple graphics</li>
+</ul>
+</li>
+<li>Cons
+<ul>
+<li>Steep learning curve</li>
+<li>No WYSIWYG (although <strong>TikzEdt</strong> is a app develove for this)</li>
+<li>Changes require recompile</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="a-typical-tikz-environment">A typical tikz environment</h2>
+
+<pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-article">article</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+
+  <span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+        &lt;---- Your code goes here ---&gt;
+  <span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><h2 class="mume-header" id="a-inline-tikz-environment">A inline tikz environment</h2>
+
+<pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-article">article</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+	in line tikz <span class="token function selector">\tikz</span> <span class="token function selector">\fill</span><span class="token punctuation">[</span>orange<span class="token punctuation">]</span> (0,0) circle (1ex); provides
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="code-chunk" data-id="code-chunk-id-1" data-cmd="latex"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/e791460cbe82f8a2f088771b1a428abc_1.svg" alt=""></p>
+</div></div><h2 class="mume-header" id="line-drawing-example">Line drawing example</h2>
+
+<pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-article">article</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\draw</span> (0,0) -- (4,4);
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="code-chunk" data-id="code-chunk-id-2" data-cmd="latex"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/190ff6417b40c2fb95f0065784ba26b5_1.svg" alt=""></p>
+</div></div><h2 class="mume-header" id="rectangle-drawing-example">Rectangle drawing example</h2>
+
+<pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-article">article</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\draw</span>  (-5.5,3) rectangle (0.5,-0.5);
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="code-chunk" data-id="code-chunk-id-3" data-cmd="latex"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/98c534390eefd35ae6ab394851bb7e2c_1.svg" alt=""></p>
+</div></div><pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-article">article</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\draw</span> (-5.5,-0.5) -- (-5.5,3) -- (0.5,3) -- (0.5,-0.5) --cycle;
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="code-chunk" data-id="code-chunk-id-4" data-cmd="latex"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/3c96348a47554ed023a92a65581c3af8_1.svg" alt=""></p>
+</div></div><h2 class="mume-header" id="ellipse-and-circle-drawing-example">Ellipse and circle drawing example</h2>
+
+<pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-article">article</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\draw</span>  (-2,2) ellipse (1 and 0.5);
+<span class="token function selector">\draw</span>  (1,2) ellipse (1 and 1);
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="code-chunk" data-id="code-chunk-id-5" data-cmd="latex"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/b74630f225b49db291691a47db6824d5_1.svg" alt=""></p>
+</div></div><h2 class="mume-header" id="drawing-bezier-curve">Drawing Bezier Curve</h2>
+
+<pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-article">article</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\draw</span>  (0,0) .. controls (0,4) and (4,0) .. (4,4);
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="code-chunk" data-id="code-chunk-id-6" data-cmd="latex"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/87b25b6d5de6de093a6bcd15fe3c7fe1_1.svg" alt=""></p>
+</div></div><h2 class="mume-header" id="changing-draw-style">Changing draw style</h2>
+
+<pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-article">article</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>line width=2<span class="token punctuation">]</span>  (0,0) -- (4,0);
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>line width=4<span class="token punctuation">]</span>  (0,-1) -- (4,-1);
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>line width=4, dashed<span class="token punctuation">]</span>  (0,-2) -- (4,-2);
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>red, line width=4, dashed<span class="token punctuation">]</span>  (0,-3) -- (4,-3);
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="code-chunk" data-id="code-chunk-id-7" data-cmd="latex"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/3e02abb0d5392c75adaa40632da7d6c1_1.svg" alt=""></p>
+</div></div><h3 class="mume-header" id="predefined-colors">Predefined Colors</h3>
+
+<p><strong>black, blue, brown, cyan, darkgray, gray, green, lightgray, lime, magenta, olive, orange, pink, purple, red, teal, violet, white, yellow</strong></p>
+<h3 class="mume-header" id="defining-own-colors">Defining own Colors</h3>
+
+<p><strong>\definecolor{new_orange}{RGB}{255,127,100}</strong></p>
+<p>Example:</p>
+<pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-article">article</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\definecolor</span><span class="token punctuation">{</span>new_orange<span class="token punctuation">}</span><span class="token punctuation">{</span>RGB<span class="token punctuation">}</span><span class="token punctuation">{</span>255,127,100<span class="token punctuation">}</span>
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>orange, line width=4, dashed<span class="token punctuation">]</span>  (0,0) -- (4,0);
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>new_orange, line width=4, dashed<span class="token punctuation">]</span>  (0,-1) -- (4,-1);
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="code-chunk" data-id="code-chunk-id-8" data-cmd="latex"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/3d96884ce7b7ee2dd059ce35396ce1d5_1.svg" alt=""></p>
+</div></div><h2 class="mume-header" id="controlling-fill-and-transparency-of-colors">Controlling fill and transparency of colors</h2>
+
+<pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-article">article</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\definecolor</span><span class="token punctuation">{</span>new_orange<span class="token punctuation">}</span><span class="token punctuation">{</span>RGB<span class="token punctuation">}</span><span class="token punctuation">{</span>255,127,100<span class="token punctuation">}</span>
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>color=red, fill=red<span class="token punctuation">]</span>(0,0) circle (1.5);
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>color=red, fill=red!40<span class="token punctuation">]</span>(4,0) circle (1.5);
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="code-chunk" data-id="code-chunk-id-9" data-cmd="latex"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/a260abc3f84495fae32266d207408a2a_1.svg" alt=""></p>
+</div></div><h2 class="mume-header" id="drawing-arrow-line">Drawing arrow line</h2>
+
+<pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-article">article</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\usetikzlibrary</span><span class="token punctuation">{</span>arrows<span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>-latex,line width=1<span class="token punctuation">]</span>  (0,0) -- (4,0);
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>latex-latex,line width=2<span class="token punctuation">]</span>  (0,-1) -- (4,-1);
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>triangle 45-,line width=2, dashed<span class="token punctuation">]</span>  (0,-2) -- (4,-2);
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>diamond-open diamond,red, line width=2, dashed<span class="token punctuation">]</span>  (0,-3) -- (4,-3);
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="code-chunk" data-id="code-chunk-id-10" data-cmd="latex"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/ba93f2e17e29840499023aa239d946a7_1.svg" alt=""></p>
+</div></div><h2 class="mume-header" id="nodes-in-tikz">nodes in TikZ</h2>
+
+<pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-article">article</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\node</span> (Node A) at (0,0) <span class="token punctuation">{</span>Node A<span class="token punctuation">}</span>;
+<span class="token function selector">\node</span> (Node B) at (4,4) <span class="token punctuation">{</span>Node B<span class="token punctuation">}</span>;
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>fill=red<span class="token punctuation">]</span> (2,3) circle (0.05cm);
+<span class="token function selector">\draw</span> (2,3) circle (1cm) node<span class="token punctuation">[</span>anchor=north west<span class="token punctuation">]</span> <span class="token punctuation">{</span>In Circle<span class="token punctuation">}</span>;
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="code-chunk" data-id="code-chunk-id-11" data-cmd="latex"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/d7edebecce042baa2cc67d0281eb4ea7_1.svg" alt=""></p>
+</div></div><p><strong>anchor options:</strong></p>
+<ul>
+<li>center</li>
+<li>east</li>
+<li>west</li>
+<li>north</li>
+<li>south</li>
+<li>north west</li>
+<li>north east</li>
+<li>south west</li>
+<li>south east</li>
+</ul>
+<h2 class="mume-header" id="relative-controls-of-shapes">relative controls of shapes</h2>
+
+<pre data-role="codeBlock" data-info="latex" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-article">article</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\node</span> (origin) at (0,0) <span class="token punctuation">{</span>~<span class="token punctuation">}</span>;
+<span class="token function selector">\draw</span> (origin.center)-- +(3cm,5cm) -- +(3cm,0cm)--cycle;
+<span class="token function selector">\draw</span> (origin.center)+(5cm,2cm) circle (1cm);
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="code-chunk" data-id="code-chunk-id-12" data-cmd="latex"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/8db9052fb27ced169eef34be5457458b_1.svg" alt=""></p>
+</div></div><h2 class="mume-header" id="design-a-flow-chart-for-adding-10-numbers-uning-tikzedt-tool">Design a flow chart for adding 10 numbers uning TikzEdt Tool</h2>
+
+<div class="code-chunk" data-id="code-chunk-id-13" data-cmd="latex"><div class="input-div"><pre data-role="codeBlock" data-info="latex{code_chunk_offset=13, cmd=true, hide=false}" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-standalone">standalone</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+
+
+<span class="token function selector">\draw</span>  (-1,3.5) ellipse (0.5 and 0.5) node <span class="token punctuation">{</span><span class="token function selector">\bf</span> Start<span class="token punctuation">}</span>;
+<span class="token function selector">\draw</span> (-2.5,1.5) -- (0.5,1.5) -- (0.7,2.5) -- (-2.3,2.5)--cycle;
+<span class="token function selector">\draw</span>  (-2.5,1) rectangle (0.5,0);
+
+
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>fill=black<span class="token punctuation">]</span>  (-1,-5) ellipse (0.5 and 0.5) node<span class="token punctuation">[</span>white<span class="token punctuation">]</span> <span class="token punctuation">{</span><span class="token function selector">\bf</span> End<span class="token punctuation">}</span>;
+<span class="token function selector">\draw</span> (-1,-0.5) -- (-2.5,-1.5) -- (-1,-2.5) -- (0.5,-1.5) -- (-1,-0.5);
+<span class="token function selector">\draw</span> (-2.5,-4) -- (0.5,-4) -- (0.7,-3) -- (-2.3,-3)--cycle;
+<span class="token function selector">\draw</span> (-1,3) -- (-1,2.5);
+<span class="token function selector">\draw</span> (-1,1.5) -- (-1,1);
+<span class="token function selector">\draw</span> (-1,-2.5) -- (-1,-3);
+<span class="token function selector">\draw</span> (0.5,-1.5) -- (1.25,-1.5);
+<span class="token function selector">\draw</span> (-1,-4) -- (-1,-4.5);
+
+
+<span class="token function selector">\node</span> at (-1,2) <span class="token punctuation">{</span>Input array <span class="token equation string">$a$</span><span class="token punctuation">}</span>;
+
+<span class="token function selector">\node</span><span class="token punctuation">[</span>anchor=south<span class="token punctuation">]</span> at (-1,0.5) <span class="token punctuation">{</span><span class="token equation string">$i=1$</span><span class="token punctuation">}</span>;
+<span class="token function selector">\node</span><span class="token punctuation">[</span>anchor=north<span class="token punctuation">]</span> at (-1,0.5) <span class="token punctuation">{</span><span class="token equation string">$s=0$</span><span class="token punctuation">}</span>;
+
+
+<span class="token function selector">\draw</span>  (1.25,-1) rectangle (4.25,-2);
+<span class="token function selector">\draw</span> (-1,0) -- (-1,-0.5);
+<span class="token function selector">\node</span><span class="token punctuation">[</span>anchor=south<span class="token punctuation">]</span> at (-1,-1.5) <span class="token punctuation">{</span>is <span class="token punctuation">}</span>;
+<span class="token function selector">\node</span><span class="token punctuation">[</span>anchor=north<span class="token punctuation">]</span> at (-1,-1.5) <span class="token punctuation">{</span><span class="token equation string">$i&lt;=N$</span> ?<span class="token punctuation">}</span>;
+<span class="token function selector">\node</span> at (2.75,-1.25) <span class="token punctuation">{</span><span class="token equation string">$s<span class="token equation-command regex">\leftarrow</span> s + a[i]$</span><span class="token punctuation">}</span>;
+<span class="token function selector">\node</span><span class="token punctuation">[</span>anchor=south<span class="token punctuation">]</span> at (0.75,-1.5) <span class="token punctuation">{</span>yes<span class="token punctuation">}</span>;
+<span class="token function selector">\node</span> at (2.75,-1.75) <span class="token punctuation">{</span><span class="token equation string">$i <span class="token equation-command regex">\leftarrow</span> i+1$</span><span class="token punctuation">}</span>;
+<span class="token function selector">\draw</span> (4.25,-1.5) -- (4.5,-1.5) -- (4.5,-0.25) -- (-1,-0.25);
+<span class="token function selector">\node</span><span class="token punctuation">[</span>anchor=west<span class="token punctuation">]</span> at (-1,-2.75) <span class="token punctuation">{</span>No<span class="token punctuation">}</span>;
+<span class="token function selector">\node</span> at (-1,-3.5) <span class="token punctuation">{</span>Print s<span class="token punctuation">}</span>;
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/cf49bd14bd68f0e724273faea55cb67e_1.svg" alt=""></p>
+</div></div><h2 class="mume-header" id="plots-in-tikz">Plots in TikZ</h2>
+
+<h2 class="mume-header" id="plots-from-csv-file-in-tikz">Plots from csv file in TikZ</h2>
+
+<p><strong>Package requited: pgfplot, pgfplotstable</strong></p>
+<pre data-role="codeBlock" data-info="LaTeX" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-standalone">standalone</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-pgfplots, pgfplotstable">pgfplots, pgfplotstable</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\pgfplotstableread</span><span class="token punctuation">[</span> col sep=comma,<span class="token punctuation">]</span><span class="token punctuation">{</span>opti_vs_acc.csv<span class="token punctuation">}</span><span class="token function selector">\datatablt</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-axis">axis</span><span class="token punctuation">}</span>  
+<span class="token punctuation">[</span>
+ybar,
+bar width=10pt,
+enlargelimits=0.15,  
+x=2cm,
+ylabel=<span class="token punctuation">{</span>Accuracy (\<span class="token comment">%)},</span>
+xlabel=<span class="token punctuation">{</span>Optimizer<span class="token punctuation">}</span>,  
+xtick=data,
+typeset ticklabels with strut,
+<span class="token comment">%x label style={at={(axis description cs:0.5,-0.2)},anchor=north},</span>
+xticklabels from table=<span class="token punctuation">{</span><span class="token function selector">\datatablt</span><span class="token punctuation">}</span><span class="token punctuation">{</span>opti<span class="token punctuation">}</span>,
+<span class="token comment">%x tick label style={rotate=90,anchor=east},</span>
+<span class="token comment">%	scale x tick={base 10:-3},</span>
+tickwidth=0mm,
+nodes near coords,
+every node near coord/.append style=<span class="token punctuation">{</span>font=<span class="token function selector">\scriptsize</span><span class="token punctuation">}</span>,
+nodes near coords align=<span class="token punctuation">{</span>vertical<span class="token punctuation">}</span>,   
+<span class="token punctuation">]</span>
+<span class="token function selector">\addplot</span> table <span class="token punctuation">[</span>x expr=<span class="token function selector">\coordindex</span>, y=densenet, col sep=comma<span class="token punctuation">]</span><span class="token punctuation">{</span>opti_vs_acc.csv<span class="token punctuation">}</span>;
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-axis">axis</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="code-chunk" data-id="code-chunk-id-14" data-cmd="latex"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/0b31dfa8ab9568e23e691c15922cfe0e_1.svg" alt=""></p>
+</div></div><h2 class="mume-header" id="plots-from-txt-file-in-tikz">Plots from txt file in TikZ</h2>
+
+<pre data-role="codeBlock" data-info="LaTeX" class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword keyword-standalone">standalone</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-tikz">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword keyword-pgfplots, pgfplotstable">pgfplots, pgfplotstable</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword keyword-axis">axis</span><span class="token punctuation">}</span><span class="token punctuation">[</span>
+grid=both,
+grid style=<span class="token punctuation">{</span>line width=.1pt, draw=gray!10<span class="token punctuation">}</span>,
+major grid style=<span class="token punctuation">{</span>line width=.2pt,draw=gray!50<span class="token punctuation">}</span>,
+minor tick num=5,
+scale only axis, <span class="token comment">% The height and width argument only apply to the actual axis</span>
+height=6cm,
+width=10cm,
+xmax=51, xmin=0,
+ymax=101, ymin=0,
+legend pos=north east,
+xtick=<span class="token punctuation">{</span>0,10,20,30,40,50<span class="token punctuation">}</span>,
+xlabel=<span class="token punctuation">{</span><span class="token function selector">\textbf</span><span class="token punctuation">{</span>Number of nodes<span class="token punctuation">}</span><span class="token punctuation">}</span>,
+ylabel=<span class="token punctuation">{</span><span class="token function selector">\textbf</span><span class="token punctuation">{</span>Accuracy<span class="token punctuation">}</span><span class="token punctuation">}</span>, ylabel near ticks,
+legend style=<span class="token punctuation">{</span>
+	at=<span class="token punctuation">{</span>(0.8,0.3)<span class="token punctuation">}</span>,
+	anchor=north<span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+<span class="token function selector">\addplot</span><span class="token punctuation">[</span>blue, thick,mark=x<span class="token punctuation">]</span> table <span class="token punctuation">[</span>y=d,x=c,col sep=comma<span class="token punctuation">]</span> <span class="token punctuation">{</span>ResultShuttel.txt<span class="token punctuation">}</span>;
+<span class="token function selector">\addplot</span><span class="token punctuation">[</span>red, thick,mark=*<span class="token punctuation">]</span> table <span class="token punctuation">[</span>y=f,x=c,col sep=comma<span class="token punctuation">]</span> <span class="token punctuation">{</span>ResultShuttel.txt<span class="token punctuation">}</span>;
+<span class="token function selector">\legend</span><span class="token punctuation">{</span>ELM,BF-ELM<span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-axis">axis</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-tikzpicture">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword keyword-document">document</span><span class="token punctuation">}</span>
+</pre><div class="code-chunk" data-id="code-chunk-id-15" data-cmd="latex"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"><p><img src="./Tikz_in_LaTeX_files_files/9c12ac85afdf444d0673362e85689847_1.svg" alt=""></p>
+</div></div>
+      </div>
+      <div class="md-sidebar-toc"><ul>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#latex-graphics-drawing-with-tikz"><span class="mathjax-exps"><span class="MathJax_Preview" style=""></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" style=""><nobr><span class="math" id="MathJax-Span-93" style="width: 3.384em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.769em; height: 0px; font-size: 122%;"><span style="position: absolute; clip: rect(1.335em, 1002.77em, 2.564em, -999.997em); top: -2.2em; left: 0em;"><span class="mrow" id="MathJax-Span-94"><span class="mi" id="MathJax-Span-95" style="font-family: MathJax_Math-italic;">L</span><span class="mspace" id="MathJax-Span-96" style="height: 0em; vertical-align: 0em; margin-left: -0.305em;"></span><span class="mpadded" id="MathJax-Span-97"><span style="display: inline-block; position: relative; width: 0.515em; height: 0px;"><span style="position: absolute; clip: rect(3.332em, 1000.51em, 4.152em, -999.997em); top: -4.198em; left: 0em;"><span class="mrow" id="MathJax-Span-98"><span class="texatom" id="MathJax-Span-99"><span class="mrow" id="MathJax-Span-100"><span class="mstyle" id="MathJax-Span-101"><span class="mrow" id="MathJax-Span-102"><span class="texatom" id="MathJax-Span-103"><span class="mrow" id="MathJax-Span-104"><span class="mi" id="MathJax-Span-105" style="font-size: 70.7%; font-family: MathJax_Math-italic;">A</span></span></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 3.998em;"></span></span></span></span><span class="mspace" id="MathJax-Span-106" style="height: 0em; vertical-align: 0em; margin-left: -0.151em;"></span><span class="mi" id="MathJax-Span-107" style="font-family: MathJax_Math-italic;">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.105em;"></span></span><span class="mspace" id="MathJax-Span-108" style="height: 0em; vertical-align: 0em; margin-left: -0.151em;"></span><span class="mpadded" id="MathJax-Span-109"><span style="display: inline-block; position: relative; width: 0.771em; height: 0px;"><span style="position: absolute; clip: rect(3.179em, 1000.77em, 4.152em, -999.997em); top: -3.788em; left: 0em;"><span class="mrow" id="MathJax-Span-110"><span class="texatom" id="MathJax-Span-111"><span class="mrow" id="MathJax-Span-112"><span class="mi" id="MathJax-Span-113" style="font-family: MathJax_Math-italic;">E<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.054em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 3.998em;"></span></span></span></span><span class="mspace" id="MathJax-Span-114" style="height: 0em; vertical-align: 0em; margin-left: -0.1em;"></span><span class="mi" id="MathJax-Span-115" style="font-family: MathJax_Math-italic;">X<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left: 0px solid; width: 0px; height: 1.253em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-5">\LaTeX</script></span> Graphics drawing with Tikz</a>
+<ul>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#what-is-tikz">What is tikz?</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#why-we-want-to-use-tikz">Why we want to use tikz?</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#pros-and-cons-of-tikz">Pros and cons of tikz</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#a-typical-tikz-environment">A typical tikz environment</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#a-inline-tikz-environment">A inline tikz environment</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#line-drawing-example">Line drawing example</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#rectangle-drawing-example">Rectangle drawing example</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#ellipse-and-circle-drawing-example">Ellipse and circle drawing example</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#drawing-bezier-curve">Drawing Bezier Curve</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#changing-draw-style">Changing draw style</a>
+<ul>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#predefined-colors">Predefined Colors</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#defining-own-colors">Defining own Colors</a></li>
+</ul>
+</li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#controlling-fill-and-transparency-of-colors">Controlling fill and transparency of colors</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#drawing-arrow-line">Drawing arrow line</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#nodes-in-tikz">nodes in TikZ</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#relative-controls-of-shapes">relative controls of shapes</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#design-a-flow-chart-for-adding-10-numbers-uning-tikzedt-tool">Design a flow chart for adding 10 numbers uning TikzEdt Tool</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#plots-in-tikz">Plots in TikZ</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#plots-from-csv-file-in-tikz">Plots from csv file in TikZ</a></li>
+<li><a href="file:///tmp/mume202267-88-non4lj.8tvm9.html#plots-from-txt-file-in-tikz">Plots from txt file in TikZ</a></li>
+</ul>
+</li>
+</ul>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  <div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; min-width: 0px; max-width: none; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_Math-italic, sans-serif;"></div></div></body></html>
